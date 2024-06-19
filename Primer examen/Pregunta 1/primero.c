@@ -5,26 +5,32 @@ void suma(int a, int b, int *resultado) {
     *resultado = a + b;
 }
 
+// Función de resta
 void resta(int a, int b, int *resultado) {
     *resultado = a - b;
 }
 
+// Función de multiplicación
 void multiplicacion(int a, int b, int *resultado) {
     *resultado = 0;
+    int temp;
     for (int i = 0; i < b; i++) {
-        *resultado += a;
+        suma(*resultado, a, &temp);
+        *resultado = temp;
     }
 }
 
+// Función de división
 void division(int a, int b, int *resultado) {
     *resultado = 0;
     int acumulador = a;
+    int temp;
     while (acumulador >= b) {
-        acumulador -= b;
+        resta(acumulador, b, &temp);
+        acumulador = temp;
         (*resultado)++;
     }
 }
-
 int main() {
     int a = 10, b = 2;
     int resultado;
